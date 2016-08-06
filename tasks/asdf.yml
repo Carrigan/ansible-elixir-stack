@@ -1,11 +1,11 @@
 ---
 - name: "install asdf"
-  git: repo="https://github.com/HashNuke/asdf.git" dest="{{ deployer }}/.asdf" update=yes
+  git: repo="https://github.com/HashNuke/asdf.git" dest="/home/{{ deployer }}/.asdf" update=yes
   remote_user: "{{deployer}}"
 
 
 - name: "source asdf in bashrc"
-  lineinfile: dest="/home/{{ deployer }}/.bash_profile" create=yes line="source ~/.asdf/asdf.sh"
+  lineinfile: dest="/home/{{ deployer }}/.bash_profile" create=yes line="source /home/{{ deployer }}/.asdf/asdf.sh"
   remote_user: "{{deployer}}"
 
 
