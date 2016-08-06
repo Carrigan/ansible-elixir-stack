@@ -22,4 +22,4 @@
 
 - name: "ensure projects directory"
   file: path="~/projects" state=directory
-  become_user: "{{ deployer }}"
+  remote_user: "{{ deployer }}"

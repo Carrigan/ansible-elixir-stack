@@ -2,7 +2,7 @@
 
 - name: run command
   command: bash -lc "{{ cmd }}" chdir="{{ project_path }}"
-  become_user: "{{ deployer }}"
+  remote_user: "{{ deployer }}"
   environment:
     MIX_ENV: "{{ mix_env }}"
   register: cmd_output
