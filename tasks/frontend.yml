@@ -1,7 +1,7 @@
 ---
 - name: "set npm jobs config"
   command: bash -lc "npm config set jobs {{ npm_config_jobs }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   args:
     chdir: "{{ project_path }}/{{ frontend_dir }}"
 
@@ -13,7 +13,7 @@
 
 - name: "fetch npm dependencies"
   command: bash -lc "npm install {{npm_install_options}}" chdir="{{ project_path }}/{{ frontend_dir }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   async: 1800
 
 
@@ -25,14 +25,14 @@
 - when: bower_json_file.stat.exists == True
   name: install bower dependencies
   command: bash -lc "$(npm bin)/bower install"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   args:
     chdir: "{{ project_path }}/{{ frontend_dir }}"
 
 
 - name: "build frontend assets"
   command: bash -lc "{{ frontend_build_command }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   args:
     chdir: "{{ project_path }}/{{ frontend_dir }}"
 
@@ -40,7 +40,7 @@
 - when: "post_frontend_build != False"
   name: "post-frontend-build command"
   command: 'bash -lc "{{ post_frontend_build }}"'
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   args:
     chdir: "{{ project_path }}"
   environment:

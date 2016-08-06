@@ -6,13 +6,13 @@
     dest: "{{ project_path }}"
     accept_hostkey: True
     force: True
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: "install tool versions"
   command: bash -lc 'asdf install' chdir="{{ project_path }}"
   async: 1800
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: "generate secret key base"
@@ -52,7 +52,7 @@
   template:
     src: default-prod.secret.exs.j2
     dest: "{{ project_path }}/config/prod.secret.exs"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - when: custom_prod_secret_template.stat.exists == True
@@ -60,7 +60,7 @@
   template:
     src: templates/prod.secret.exs.j2
     dest: "{{ project_path }}/config/prod.secret.exs"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: check if conform config exists
@@ -73,22 +73,22 @@
   template:
     src: "templates/{{ app_name }}.conf.j2"
     dest: "{{ project_path }}/config/{{ app_name }}.conf"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: install hex
   command: bash -lc "mix local.hex --force" chdir="{{ project_path }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: install rebar
   command: bash -lc "mix local.rebar --force" chdir="{{ project_path }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
 
 
 - name: "fetch mix dependencies"
   command: bash -lc 'mix deps.get' chdir="{{ project_path }}"
   async: 900
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   environment:
     MIX_ENV: "{{ mix_env }}"

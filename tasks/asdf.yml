@@ -1,12 +1,12 @@
 ---
 - name: "install asdf"
   git: repo="https://github.com/HashNuke/asdf.git" dest="~/.asdf" update=yes
-  remote_user: "{{deployer}}"
+  become_user: "{{deployer}}"
 
 
 - name: "source asdf in bashrc"
   lineinfile: dest="~/.bash_profile" create=yes line="source ~/.asdf/asdf.sh"
-  remote_user: "{{deployer}}"
+  become_user: "{{deployer}}"
 
 
 - name: "add asdf plugins"
@@ -15,4 +15,4 @@
     - nodejs
     - erlang
     - elixir
-  remote_user: "{{deployer}}"
+  become_user: "{{deployer}}"

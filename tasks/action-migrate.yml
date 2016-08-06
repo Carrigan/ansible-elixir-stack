@@ -2,6 +2,6 @@
 
 - name: migrate database
   command: bash -lc "mix ecto.migrate" chdir="{{ project_path }}"
-  remote_user: "{{ deployer }}"
+  become_user: "{{ deployer }}"
   environment:
     MIX_ENV: "{{ mix_env }}"
