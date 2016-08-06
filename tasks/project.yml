@@ -11,7 +11,6 @@
 
 - name: "install tool versions"
   command: bash -lc 'asdf install' chdir="{{ project_path }}"
-  async: 1800
   remote_user: "{{ deployer }}"
 
 
@@ -88,7 +87,6 @@
 
 - name: "fetch mix dependencies"
   command: bash -lc 'mix deps.get' chdir="{{ project_path }}"
-  async: 900
   remote_user: "{{ deployer }}"
   environment:
     MIX_ENV: "{{ mix_env }}"

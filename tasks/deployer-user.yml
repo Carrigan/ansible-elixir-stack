@@ -4,7 +4,7 @@
 
 
 - name: "read authorized keys from root user"
-  command: "cat /home/{{ deployer }}/.ssh/authorized_keys"
+  command: "cat ~/.ssh/authorized_keys"
   register: "root_authorized_keys"
 
 

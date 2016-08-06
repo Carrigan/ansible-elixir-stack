@@ -14,8 +14,6 @@
 - name: "fetch npm dependencies"
   command: bash -lc "npm install {{npm_install_options}}" chdir="{{ project_path }}/{{ frontend_dir }}"
   remote_user: "{{ deployer }}"
-  async: 1800
-
 
 - name: check for bower.json
   stat: path="{{ project_path }}/{{frontend_dir}}/bower.json"
