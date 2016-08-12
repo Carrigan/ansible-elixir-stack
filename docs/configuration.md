@@ -52,4 +52,4 @@ The domains/subdomains to use for your project. By default your project is acces
 
 ## Other options
 
-There is a tonne of other options. All of them along with explanation can be found in the [defaults/vars.yml](https://github.com/HashNuke/ansible-elixir-stack/blob/master/defaults/vars.yml) file
+There is a tonne of other options. All of them along with explanation can be found in the [defaults/vars.yml](https://github.com/Carrigan/ansible-elixir-stack/blob/master/defaults/vars.yml) file

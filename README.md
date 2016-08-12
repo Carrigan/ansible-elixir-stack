@@ -15,13 +15,13 @@ Tool to deploy [Elixir](http://elixir-lang.org/) & [Phoenix](http://www.phoenixf
 * Monitoring & automatic restarts using `monit`
 * Organized as an Ansible role, BUT requires no knowledge of Ansible
 
-> To deploy to Heroku, use the [Heroku Elixir buildpack](https://github.com/HashNuke/heroku-buildpack-elixir) instead.
+> To deploy to Heroku, use the [Heroku Elixir buildpack](https://github.com/Carrigan/heroku-buildpack-elixir) instead.
 
 ## Install
 
 ```sh
 $ pip install ansible
-$ ansible-galaxy install HashNuke.elixir-stack
+$ ansible-galaxy install Carrigan.elixir-stack
 
 # assuming your SSH key is called `id_rsa`
 # run this everytime you start your computer

@@ -12,7 +12,7 @@ cat > playbooks/setup.yml <<EOF
     - vars/main.yml
 
   roles:
-    - {role: "HashNuke.elixir-stack", action: "setup"}
+    - {role: "Carrigan.elixir-stack", action: "setup"}
 EOF
 
 
@@ -24,7 +24,7 @@ cat > playbooks/deploy.yml <<EOF
     - vars/main.yml
 
   roles:
-    - {role: "HashNuke.elixir-stack", action: "deploy"}
+    - {role: "Carrigan.elixir-stack", action: "deploy"}
 EOF
 
 
@@ -36,7 +36,7 @@ cat > playbooks/migrate.yml <<EOF
     - vars/main.yml
 
   roles:
-    - {role: "HashNuke.elixir-stack", action: "migrate"}
+    - {role: "Carrigan.elixir-stack", action: "migrate"}
 EOF
 
 
@@ -48,7 +48,7 @@ cat > playbooks/remove-app.yml <<EOF
     - vars/main.yml
 
   roles:
-    - {role: "HashNuke.elixir-stack", action: "remove-app"}
+    - {role: "Carrigan.elixir-stack", action: "remove-app"}
 EOF
 
 
