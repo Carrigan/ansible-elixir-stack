@@ -27,3 +27,4 @@
 
 - name: "bootstrap nodejs trust"
   command: "bash -lc '~/.asdf/plugins/nodejs/bin/import-release-team-keyring'"
+  remote_user: "{{deployer}}"
