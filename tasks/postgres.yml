@@ -18,6 +18,12 @@
   pip: name=psycopg2
 
 
+- name: start postgres service
+  service:
+    name: postgresql
+    state: started
+
+
 - name: create postgres user for deployer
   postgresql_user:
     name: "{{ deployer }}"
