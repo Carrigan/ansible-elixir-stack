@@ -10,3 +10,6 @@
 
 - name: "set database user"
   set_fact: database_user="{{ deployer }}"
+
+- name: "set database host"
+  set_fact: database_host="127.0.0.1"

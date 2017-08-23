@@ -45,21 +45,29 @@
   local_action: stat path="templates/prod.secret.exs.j2"
   register: custom_prod_secret_template
 
+- name: set database username
+  lineinfile:
+    - path: ~/.bash_profile
+      regexp: "export DATABASE_USER="
+      line: "export DATABASE_USER={{ database_user }}"
 
-- when: custom_prod_secret_template.stat.exists == False
-  name: add prod.secret.exs from default template
-  template:
-    src: default-prod.secret.exs.j2
-    dest: "{{ project_path }}/config/prod.secret.exs"
-  remote_user: "{{ deployer }}"
+- name: set database password
+  lineinfile:
+    - path: ~/.bash_profile
+      regexp: "export DATABASE_PASSWORD="
+      line: "export DATABASE_PASSWORD={{ database_password }}"
 
+- name: set database hostname
+  lineinfile:
+    - path: ~/.bash_profile
+      regexp: "export DATABASE_HOST="
+      line: "export DATABASE_HOST={{ database_host }}"
 
-- when: custom_prod_secret_template.stat.exists == True
-  name: add prod.secret.exs from custom template provided
-  template:
-    src: templates/prod.secret.exs.j2
-    dest: "{{ project_path }}/config/prod.secret.exs"
-  remote_user: "{{ deployer }}"
+- name: set database database
+  lineinfile:
+    - path: ~/.bash_profile
+      regexp: "export DATABASE_DATABASE="
+      line: "export DATABASE_DATABASE={{ database_name }}"
 
 
 - name: check if conform config exists
