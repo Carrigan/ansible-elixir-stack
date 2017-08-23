@@ -41,21 +41,44 @@
   set_fact: app_repo_module="{{ grep_repo_module.stdout }}"
 
 
-- name: set database variables
+- name: set database user
   remote_user: "{{deployer}}"
   lineinfile:
-  - dest: ~/.bash_profile
+    dest: ~/.bash_profile
     regexp: "export DATABASE_USER="
     line: "export DATABASE_USER={{ database_user }}"
-  - dest: ~/.bash_profile
+
+
+- name: set database password
+  remote_user: "{{deployer}}"
+  lineinfile:
+    dest: ~/.bash_profile
     regexp: "export DATABASE_PASSWORD="
     line: "export DATABASE_PASSWORD={{ database_password }}"
-  - dest: ~/.bash_profile
+
+
+- name: set database host
+  remote_user: "{{deployer}}"
+  lineinfile:
+    dest: ~/.bash_profile
     regexp: "export DATABASE_HOST="
     line: "export DATABASE_HOST={{ database_host }}"
-  - dest: ~/.bash_profile
+
+
+- name: set database name
+  remote_user: "{{deployer}}"
+  lineinfile:
+    dest: ~/.bash_profile
     regexp: "export DATABASE_DATABASE="
     line: "export DATABASE_DATABASE={{ database_name }}"
+
+
+- name: set secret key base
+  remote_user: "{{deployer}}"
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "export SECREY_KEY_BASE="
+    line: "export SECREY_KEY_BASE={{ secret_key_base }}"
 
 
 - name: check if conform config exists
