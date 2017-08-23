@@ -1,8 +1,7 @@
 ---
 - when: deploy_type == "restart"
   name: stop app
-  monit: name="{{ app_name }}" state=stopped timeout=300
-
+  command: bash -lc "sudo monit stop {{ app_name }}"
 
 - when: deploy_type == "restart"
   name: delete release
@@ -20,7 +19,7 @@
 
 - when: deploy_type == "restart"
   name: start app
-  monit: name="{{ app_name }}" state=started timeout=300
+  command: bash -lc "sudo monit start {{ app_name }}"
 
 
 - when: deploy_type == "upgrade"
