@@ -41,11 +41,6 @@
   set_fact: app_repo_module="{{ grep_repo_module.stdout }}"
 
 
-- name: check if custom template for prod.secret.exs exists
-  local_action: stat path="templates/prod.secret.exs.j2"
-  register: custom_prod_secret_template
-
-
 - name: set database variables
   remote_user: "{{deployer}}"
   lineinfile:
