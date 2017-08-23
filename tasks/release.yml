@@ -1,7 +1,7 @@
 ---
 - when: deploy_type == "restart"
   name: stop app
-  monit: name="{{ app_name }}" state=stopped
+  monit: name="{{ app_name }}" state=stopped timeout=300
 
 
 - when: deploy_type == "restart"
@@ -20,7 +20,7 @@
 
 - when: deploy_type == "restart"
   name: start app
-  monit: name="{{ app_name }}" state=started
+  monit: name="{{ app_name }}" state=started timeout=300
 
 
 - when: deploy_type == "upgrade"
