@@ -77,8 +77,8 @@
   remote_user: "{{deployer}}"
   lineinfile:
     dest: ~/.bash_profile
-    regexp: "export SECREY_KEY_BASE="
-    line: 'export SECREY_KEY_BASE="{{ secret_key_base }}"'
+    regexp: "export SECRET_KEY_BASE="
+    line: 'export SECRET_KEY_BASE="{{ secret_key_base }}"'
 
 
 - name: check if conform config exists
