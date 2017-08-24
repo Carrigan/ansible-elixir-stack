@@ -1,6 +1,6 @@
 ---
 - name: "generate secret key base"
-  command: "openssl rand -base64 {{ secret_key_base_length }} | tr -d '\n'"
+  command: "openssl rand -base64 {{ secret_key_base_length }} | tr -d '\\n'"
   register: openssl_random_string
 
 
